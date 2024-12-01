@@ -1,0 +1,28 @@
+{
+  "name": "loom-mcp",
+  "version": "0.1.0",
+  "description": "loom for claude",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "loom-mcp": "./build/index.js"
+  },
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
+    "prepare": "npm run build",
+    "watch": "tsc --watch",
+    "inspector": "npx @modelcontextprotocol/inspector build/index.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.14.1",
+    "@modelcontextprotocol/sdk": "0.6.0",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "typescript": "^5.3.3"
+  }
+}
