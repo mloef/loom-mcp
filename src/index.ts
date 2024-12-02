@@ -288,8 +288,9 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             // Find the first difference to highlight in the error message
             let i = 0;
             while (i < trimmedText.length && i < originalText.length && trimmedText[i] === originalText[i]) i++;
-            const diffContext = `${trimmedText.slice(Math.max(0, i-20), i)}[${trimmedText[i]}]${trimmedText.slice(i+1, i+20)}`;
-            throw new Error(`Trimmed text must be a prefix of the original text. First difference at position ${i}:\n${diffContext}`);
+            const trimmedDiff = `${trimmedText.slice(Math.max(0, i-20), i)}[${trimmedText[i]}]${trimmedText.slice(i+1, i+20)}`;
+            const originalDiff = `${originalText.slice(Math.max(0, i-20), i)}[${originalText[i]}]${originalText.slice(i+1, i+20)}`;
+            throw new Error(`Trimmed text must be a prefix of the original text. First difference at position ${i}:\nTrimmed: ${trimmedDiff}\nOriginal: ${originalDiff}`);
           }
 
           let newText = trimmedText ? trimmedText : originalText;
