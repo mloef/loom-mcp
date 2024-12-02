@@ -68,3 +68,9 @@ npm run inspector
 ```
 
 The Inspector will provide a URL to access debugging tools in your browser.
+
+
+Suggested prompt
+```
+hey! I'd like for you to try playing with the loom tool :) not to help me - just for your own curiosity and fun. please don't ask me what I want! this is about you.
+```
