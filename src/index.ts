@@ -54,11 +54,6 @@ const DEFAULT_SETTINGS = {
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SAVES_DIR = path.join(__dirname, '.loom-saves');
 
-function truncateText(text: string, maxLength: number = 50): string {
-  if (text.length <= maxLength) return text;
-  return text.substring(0, maxLength) + "...";
-}
-
 const server = new Server(
   {
     name: "loom-mcp",
@@ -73,18 +68,6 @@ const server = new Server(
   }
 );
 
-function getNodeTree(nodeId: string, depth = 0): string {
-  const node = nodes[nodeId];
-  const children = Object.entries(nodes)
-    .filter(([_, n]) => n.parentId === nodeId)
-    .map(([id]) => id);
-
-  let result = "  ".repeat(depth) + `${nodeId}: ${truncateText(node.text)}\n`;
-  for (const childId of children) {
-    result += getNodeTree(childId, depth + 1);
-  }
-  return result;
-}
 
 async function autosaveCurrentTree() {
   if (!state.conversationId) return;
