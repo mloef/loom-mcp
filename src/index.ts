@@ -146,7 +146,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       },
       {
         name: "loom_show_path",
-        description: "Shows the complete text from root to current node. Use this to show the user the current thread.",
+        description: "Prints the complete text from root to current focused node. It can be difficult for the human to follow your explorations, so use this to show them the current thread.",
         inputSchema: {
           type: "object",
           properties: {},
